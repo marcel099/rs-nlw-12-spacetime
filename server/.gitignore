@@ -1,0 +1,6 @@
+# Environment Variables
+.env
+
+# SQLite
+dev.db
+dev.db-journal
