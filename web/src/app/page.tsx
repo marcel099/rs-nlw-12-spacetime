@@ -2,12 +2,16 @@ export default function Home() {
   return (
     <div
       className="
-        m-10 h-24 w-24 rounded
-        bg-red-400
-        text-2xl font-bold uppercase
+        h-screen bg-zinc-950 p-6
       "
     >
-      Hello World
+      <h1
+        className="
+          text-4xl font-bold text-zinc-50
+        "
+      >
+        Sua cápsula do tempo
+      </h1>
     </div>
   )
 }
