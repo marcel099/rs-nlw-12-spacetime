@@ -3,9 +3,9 @@ import { StyleSheet, Text, View } from 'react-native';
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      <Text style={styles.text}>Hello World</Text>
-      <StatusBar style="light"  />
+    <View className="bg-gray-950 flex-1 items-center justify-center">
+      <Text className="text-gray-50 font-bold text-5xl">Hello World</Text>
+      <StatusBar style="light" translucent />
     </View>
   );
 }
