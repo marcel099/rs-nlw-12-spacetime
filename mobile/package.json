@@ -11,6 +11,8 @@
   "dependencies": {
     "@expo-google-fonts/bai-jamjuree": "^0.2.3",
     "@expo-google-fonts/roboto": "^0.2.3",
+    "babel-plugin-inline-dotenv": "^1.7.0",
+    "dotenv": "^16.0.3",
     "expo": "~48.0.15",
     "expo-font": "~11.1.1",
     "expo-status-bar": "~1.4.4",
@@ -22,6 +24,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.0",
     "@rocketseat/eslint-config": "^1.2.0",
+    "@types/node": "^20.2.1",
     "@types/react": "~18.0.27",
     "eslint": "^8.40.0",
     "prettier-plugin-tailwindcss": "^0.3.0",
