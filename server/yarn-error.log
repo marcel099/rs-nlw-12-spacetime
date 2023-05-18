@@ -1,5 +1,5 @@
 Arguments: 
-  C:\Program Files\nodejs\node.exe C:\Users\marce\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add @fastify/cors
+  C:\Program Files\nodejs\node.exe C:\Users\marce\AppData\Roaming\npm\node_modules\yarn\bin\yarn.js add src\server.ts -p
 
 PATH: 
   C:\Python310\Scripts\;C:\Python310\;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Windows\System32\OpenSSH\;C:\Program Files\Git\cmd;C:\Program Files\GitHub CLI\;C:\Program Files\nodejs\;C:\ProgramData\chocolatey\bin;C:\Program Files\Docker\Docker\resources\bin;C:\ProgramData\DockerDesktop\version-bin;C:\Program Files\PuTTY\;C:\Program Files\OpenJDK\openjdk-11.0.16_8\bin;C:\Android\Sdk\emulator;C:\Android\Sdk\tools;C:\Android\Sdk\tools\bin;C:\Android\Sdk\platform-tools;C:\Users\marce\AppData\Local\Microsoft\WindowsApps;C:\Users\marce\AppData\Local\Programs\Microsoft VS Code\bin;C:\Users\marce\AppData\Roaming\npm;C:\Users\marce\AppData\Local\Yarn\bin;C:\flutter\bin;C:\Program Files\AntiMicroX\bin
@@ -14,7 +14,17 @@ Platform:
   win32 x64
 
 Trace: 
-  Error: EPERM: operation not permitted, unlink 'C:\www\rocketseat\nlw\nlw-12-spacetime\server\node_modules\prisma\engines\d9a4c5988f480fa576d43970d5a23641aa77bc9c\query_engine-windows.dll.node'
+  Error: https://registry.yarnpkg.com/src/server.ts: Request "https://registry.yarnpkg.com/src/server.ts" returned a 405
+      at Request.params.callback [as _callback] (C:\Users\marce\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:66154:18)
+      at Request.self.callback (C:\Users\marce\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:140890:22)
+      at Request.emit (node:events:526:28)
+      at Request.<anonymous> (C:\Users\marce\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141862:10)
+      at Request.emit (node:events:526:28)
+      at IncomingMessage.<anonymous> (C:\Users\marce\AppData\Roaming\npm\node_modules\yarn\lib\cli.js:141784:12)
+      at Object.onceWrapper (node:events:645:28)
+      at IncomingMessage.emit (node:events:538:35)
+      at endReadableNT (node:internal/streams/readable:1345:12)
+      at processTicksAndRejections (node:internal/process/task_queues:83:21)
 
 npm manifest: 
   {
@@ -32,12 +42,14 @@ npm manifest:
     "devDependencies": {
       "@rocketseat/eslint-config": "^1.2.0",
       "@types/node": "^20.1.5",
+      "dotenv": "^16.0.3",
       "eslint": "^8.40.0",
       "prisma": "^4.14.0",
       "tsx": "^3.12.7",
       "typescript": "^5.0.4"
     },
     "dependencies": {
+      "@fastify/cors": "^8.2.1",
       "@prisma/client": "^4.14.0",
       "fastify": "^4.17.0",
       "zod": "^3.21.4"
@@ -233,6 +245,14 @@ Lockfile:
       ajv "^8.11.0"
       ajv-formats "^2.1.1"
       fast-uri "^2.0.0"
+  
+  "@fastify/cors@^8.2.1":
+    version "8.2.1"
+    resolved "https://registry.yarnpkg.com/@fastify/cors/-/cors-8.2.1.tgz#dd348162bcbfb87dff4b492e2bef32d41244006a"
+    integrity sha512-2H2MrDD3ea7g707g1CNNLWb9/tYbmw7HS+MK2SDcgjxwzbOFR93JortelTIO8DBFsZqFtEpKNxiZfSyrGgYcbw==
+    dependencies:
+      fastify-plugin "^4.0.0"
+      mnemonist "0.39.5"
   
   "@fastify/deepmerge@^1.0.0":
     version "1.3.0"
@@ -774,6 +794,11 @@ Lockfile:
     dependencies:
       esutils "^2.0.2"
   
+  dotenv@^16.0.3:
+    version "16.0.3"
+    resolved "https://registry.yarnpkg.com/dotenv/-/dotenv-16.0.3.tgz#115aec42bac5053db3c456db30cc243a5a836a07"
+    integrity sha512-7GO6HghkA5fYG9TYnNxi14/7K9f5occMlp3zXAuSxn7CKCxt9xbNWG7yF8hTCSUchlfWSe3uLmlPfigevRItzQ==
+  
   emoji-regex@^9.2.2:
     version "9.2.2"
     resolved "https://registry.yarnpkg.com/emoji-regex/-/emoji-regex-9.2.2.tgz#840c8803b0d8047f4ff0cf963176b32d4ef3ed72"
@@ -1229,6 +1254,11 @@ Lockfile:
     version "2.2.0"
     resolved "https://registry.yarnpkg.com/fast-uri/-/fast-uri-2.2.0.tgz#519a0f849bef714aad10e9753d69d8f758f7445a"
     integrity sha512-cIusKBIt/R/oI6z/1nyfe2FvGKVTohVRfvkOhvx0nCEW+xf5NoCXjAHcWp93uOUBchzYcsvPlrapAdX1uW+YGg==
+  
+  fastify-plugin@^4.0.0:
+    version "4.5.0"
+    resolved "https://registry.yarnpkg.com/fastify-plugin/-/fastify-plugin-4.5.0.tgz#8b853923a0bba6ab6921bb8f35b81224e6988d91"
+    integrity sha512-79ak0JxddO0utAXAQ5ccKhvs6vX2MGyHHMMsmZkBANrq3hXc1CHzvNPHOcvTsVMEPl5I+NT+RO4YKMGehOfSIg==
   
   fastify@^4.17.0:
     version "4.17.0"
@@ -1815,6 +1845,13 @@ Lockfile:
     resolved "https://registry.yarnpkg.com/minimist/-/minimist-1.2.8.tgz#c1a464e7693302e082a075cee0c057741ac4772c"
     integrity sha512-2yyAR8qBkN3YuheJanUpWC5U3bb5osDywNB8RzDVlDwDHbocAJveqqj1u8+SVD7jkWT4yvsHCpWqqWqAxb0zCA==
   
+  mnemonist@0.39.5:
+    version "0.39.5"
+    resolved "https://registry.yarnpkg.com/mnemonist/-/mnemonist-0.39.5.tgz#5850d9b30d1b2bc57cc8787e5caa40f6c3420477"
+    integrity sha512-FPUtkhtJ0efmEFGpU14x7jGbTB+s18LrzRL2KgoWz9YvcY3cPomz8tih01GbHwnGk/OmkOKfqd/RAQoc8Lm7DQ==
+    dependencies:
+      obliterator "^2.0.1"
+  
   ms@2.1.2:
     version "2.1.2"
     resolved "https://registry.yarnpkg.com/ms/-/ms-2.1.2.tgz#d09d1f357b443f493382a8eb3ccd183872ae6009"
@@ -1902,6 +1939,11 @@ Lockfile:
       call-bind "^1.0.2"
       define-properties "^1.1.4"
       es-abstract "^1.20.4"
+  
+  obliterator@^2.0.1:
+    version "2.0.4"
+    resolved "https://registry.yarnpkg.com/obliterator/-/obliterator-2.0.4.tgz#fa650e019b2d075d745e44f1effeb13a2adbe816"
+    integrity sha512-lgHwxlxV1qIg1Eap7LgIeoBWIMFibOjbrYPIPJZcI1mmGAI2m3lNYpK12Y+GBdPQ0U1hRwSord7GIaawz962qQ==
   
   on-exit-leak-free@^2.1.0:
     version "2.1.0"
