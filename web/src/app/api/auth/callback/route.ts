@@ -13,13 +13,11 @@ export async function GET(request: NextRequest) {
 
   const { token } = registerResponse.data
 
-  console.log(token)
-
   const redirectURL = new URL('/', request.url)
 
   return NextResponse.redirect(redirectURL, {
     headers: {
-      'Set-Cookie': `token=${token}; Path=/;max-age=${auth.cookie_expiration_time_in_seconds}`,
+      'Set-Cookie': `${auth.cookie_name}=${token}; Path=/;max-age=${auth.cookie_expiration_time_in_seconds}`,
     },
   })
 }
