@@ -3,6 +3,7 @@ import fastify from 'fastify'
 import cors from '@fastify/cors'
 import jwt from '@fastify/jwt'
 import multipart from '@fastify/multipart'
+import { resolve } from 'node:path'
 
 import { memoriresRoutes } from './routes/memories'
 import { authRoutes } from './routes/auth'
@@ -18,6 +19,10 @@ app.register(jwt, {
   secret: auth.token_secret,
 })
 app.register(multipart)
+app.register(require('@fastify/static'), {
+  root: resolve(__dirname, '../tmp/memory'),
+  prefix: '/uploads/memory',
+})
 
 app.register(memoriresRoutes)
 app.register(authRoutes)
