@@ -4,3 +4,13 @@
 # SQLite
 dev.db
 dev.db-journal
+
+# Temporary files
+
+# any tmp's direct child, except folders
+tmp/*
+!tmp/*/
+
+# any direct child of tmp's direct child, except .gitkeep
+tmp/*/*
+!tmp/*/.gitkeep

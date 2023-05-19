@@ -1,21 +1,12 @@
 import { useEffect } from 'react'
 import { useRouter } from 'expo-router'
-import { StatusBar } from 'expo-status-bar'
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
-import { ImageBackground, Text, TouchableOpacity, View } from 'react-native'
-import { useFonts } from 'expo-font'
-import { Roboto_400Regular, Roboto_700Bold } from '@expo-google-fonts/roboto'
-import { BaiJamjuree_700Bold } from '@expo-google-fonts/bai-jamjuree'
-import { styled } from 'nativewind'
+import { Text, TouchableOpacity, View } from 'react-native'
 import * as SecureStore from 'expo-secure-store'
 
-import blurBgImg from '../src/shared/assets/bg-blur.png'
-import Stripes from '../src/shared/assets/stripes.svg'
 import NlwSpacetimeLogo from '../src/shared/assets/nlw-spacetime-logo.svg'
 import { api } from '../src/shared/services/axios'
 import { SIGNED_IN_USER_TOKEN } from '../src/shared/configs/secureStorage'
-
-const StyledStripes = styled(Stripes)
 
 // const { GITHUB_CLIENT_ID } = '@env'
 // const { GITHUB_CLIENT_ID } = process.env
@@ -28,14 +19,8 @@ const discovery = {
   revocationEndpoint: `https://github.com/settings/connections/applications/${GITHUB_CLIENT_ID}`,
 }
 
-export default function App() {
+export default function Home() {
   const router = useRouter()
-
-  const [hasLoadedFonts] = useFonts({
-    Roboto_700Bold,
-    Roboto_400Regular,
-    BaiJamjuree_700Bold,
-  })
 
   const [request, response, signInWithGitHub] = useAuthRequest(
     {
@@ -66,22 +51,8 @@ export default function App() {
     }
   }, [response])
 
-  if (hasLoadedFonts === false) {
-    return null
-  }
-
   return (
-    <ImageBackground
-      source={blurBgImg}
-      className="relative flex-1 items-center bg-gray-900 px-8 py-10"
-      imageStyle={{
-        position: 'absolute',
-        left: '-100%',
-      }}
-    >
-      <StatusBar style="light" translucent />
-      <StyledStripes className="absolute left-2" />
-
+    <View className="flex-1 items-center px-8 py-10">
       <View className="flex-1 items-center justify-center gap-6">
         <NlwSpacetimeLogo />
         <View className="space-y-2">
@@ -109,6 +80,6 @@ export default function App() {
       <Text className="text-center font-body leading-relaxed text-gray-200">
         Feito com 💜 no NLW da Rocketseat
       </Text>
-    </ImageBackground>
+    </View>
   )
 }
