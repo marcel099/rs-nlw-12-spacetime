@@ -36,7 +36,7 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       <body
         className={`
           ${roboto.variable} ${baiJamjuree.variable}
-          bg-gray-900 font-sans text-gray-100
+          bg-gray-900 font-main text-gray-100
         `}
       >
         <main
