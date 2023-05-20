@@ -21,7 +21,7 @@ export function MediaPicker() {
     <>
       <input
         type="file"
-        name="media"
+        name="coverUrl"
         id="media"
         accept="image/*"
         className="invisible h-0 w-0"
