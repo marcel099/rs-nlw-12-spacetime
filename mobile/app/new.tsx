@@ -1,6 +1,9 @@
 import Icon from '@expo/vector-icons/Feather'
+import * as ImagePicker from 'expo-image-picker'
 import { useState } from 'react'
 import {
+  Alert,
+  Image,
   ScrollView,
   Switch,
   Text,
@@ -16,7 +19,24 @@ import { Link } from 'expo-router'
 export default function NewMemory() {
   const { bottom, top } = useSafeAreaInsets()
 
+  const [preview, setPreview] = useState<string | null>(null)
   const [isPublic, setIsPublic] = useState(false)
+
+  async function openImagePicker() {
+    try {
+      const result = await ImagePicker.launchImageLibraryAsync({
+        mediaTypes: ImagePicker.MediaTypeOptions.Images,
+        quality: 1,
+        selectionLimit: 1,
+      })
+
+      if (!result.canceled && result.assets[0]) {
+        setPreview(result.assets[0].uri)
+      }
+    } catch (error) {
+      Alert.alert('Erro ao selecionar imagem')
+    }
+  }
 
   return (
     <ScrollView
@@ -49,13 +69,22 @@ export default function NewMemory() {
         <TouchableOpacity
           activeOpacity={0.7}
           className="h-32 items-center justify-center rounded-lg border border-dashed border-gray-500 bg-black/20"
+          onPress={openImagePicker}
         >
-          <View className="flex-row items-center gap-2">
-            <Icon name="image" color="#fff" />
-            <Text className="font-body text-sm text-gray-200">
-              Adicionar foto ou vídeo de capa
-            </Text>
-          </View>
+          {preview !== null ? (
+            <Image
+              source={{ uri: preview }}
+              className="h-full w-full rounded-lg object-cover"
+              alt="Sua imagem"
+            />
+          ) : (
+            <View className="flex-row items-center gap-2">
+              <Icon name="image" color="#fff" />
+              <Text className="font-body text-sm text-gray-200">
+                Adicionar foto ou vídeo de capa
+              </Text>
+            </View>
+          )}
         </TouchableOpacity>
 
         <TextInput
