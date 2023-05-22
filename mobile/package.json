@@ -12,7 +12,6 @@
     "@expo-google-fonts/bai-jamjuree": "^0.2.3",
     "@expo-google-fonts/roboto": "^0.2.3",
     "axios": "^1.4.0",
-    "babel-plugin-inline-dotenv": "^1.7.0",
     "dayjs": "^1.11.7",
     "dotenv": "^16.0.3",
     "expo": "~48.0.15",

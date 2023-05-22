@@ -1,3 +1,4 @@
+import { GITHUB_CLIENT_ID } from '@env'
 import { useEffect } from 'react'
 import { useRouter } from 'expo-router'
 import { makeRedirectUri, useAuthRequest } from 'expo-auth-session'
@@ -7,11 +8,6 @@ import * as SecureStore from 'expo-secure-store'
 import NlwSpacetimeLogo from '../src/shared/assets/nlw-spacetime-logo.svg'
 import { api } from '../src/shared/services/axios'
 import { SIGNED_IN_USER_TOKEN } from '../src/shared/configs/secureStorage'
-
-// const { GITHUB_CLIENT_ID } = '@env'
-// const { GITHUB_CLIENT_ID } = process.env
-
-const GITHUB_CLIENT_ID = 'lorem_ipsum'
 
 const discovery = {
   authorizationEndpoint: 'https://github.com/login/oauth/authorize',
