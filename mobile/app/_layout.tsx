@@ -43,7 +43,7 @@ export default function Layout() {
         left: '-100%',
       }}
     >
-      <StatusBar style="light" translucent />
+      <StatusBar style="light" backgroundColor="#121215" translucent />
       <StyledStripes className="absolute left-2" />
 
       <Stack
@@ -52,11 +52,12 @@ export default function Layout() {
           contentStyle: {
             backgroundColor: 'transparent',
           },
+          animation: 'fade',
         }}
       >
         <Stack.Screen name="index" redirect={isUserAuthenticated} />
-        <Stack.Screen name="new" />
         <Stack.Screen name="memories" />
+        <Stack.Screen name="new" />
       </Stack>
     </ImageBackground>
   )
