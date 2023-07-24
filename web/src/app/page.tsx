@@ -48,6 +48,7 @@ export default async function Home() {
           </time>
           <Image
             src={memory.coverUrl}
+            unoptimized
             width={592}
             height={280}
             className="aspect-video w-full rounded-lg object-cover"
