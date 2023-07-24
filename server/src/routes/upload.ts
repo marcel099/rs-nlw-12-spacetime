@@ -1,47 +1,66 @@
-import { randomUUID } from 'node:crypto'
-import { createWriteStream } from 'node:fs'
-import { extname, resolve } from 'node:path'
-import { pipeline } from 'node:stream'
-import util from 'node:util'
+import axios, { AxiosError } from 'axios';
+import FormData from 'form-data'
 import { FastifyInstance } from 'fastify'
-
-const pump = util.promisify(pipeline)
+import { z, ZodError } from 'zod'
 
 export async function uploadRoutes(app: FastifyInstance) {
   app.post('/upload', async (request, reply) => {
-    const upload = await request.file({
-      limits: {
-        fileSize: 5_242_880, // 5 MB
-      },
-    })
+    try {
+      if (!request.isMultipart()) {
+        reply.code(400).send(new Error("Request is not multipart"));
+        return;
+      }
 
-    if (!upload) {
-      return reply.status(400).send()
+      const fileSchema = z.object({
+        data: z.any(),
+        filename: z.string().min(1),
+        mimetype: z.string().regex(
+          /^(image)\/[a-zA-Z]*/,
+          'Invalid file type'
+        ),
+      })
+
+      const bodySchema = z.object({
+        file: z.array(fileSchema).refine(
+          (files) => files?.length === 1, "Image is required."
+        ),
+      })
+  
+      const { file } = bodySchema.parse(request.body)
+
+      const upload = file[0]
+
+      const formData = new FormData();
+  
+      formData.append('image', upload.data.toString('base64'));
+      formData.append('key', process.env.IMGBB_API_KEY);
+  
+      const response = await axios.post(
+        'https://api.imgbb.com/1/upload',
+        formData,
+        {
+          headers: { 'content-type': 'multipart/form-data' }
+        }
+      )
+  
+      return {
+        fileUrl: response.data.data.url
+      }
+    } catch (error) {
+      if (error instanceof AxiosError) {
+        console.error(error.code)
+        console.error(error.message)
+        console.error(error?.response?.data)
+      }
+
+      if (error instanceof ZodError) {
+        reply.code(400).send(error.issues)
+        return
+      }
+
+      console.error(error)
+
+      reply.code(500)
     }
-
-    const mimeTypeRegex = /^(image|video)\/[a-zA-Z]*/
-
-    const isValidFileFormat = mimeTypeRegex.test(upload.mimetype)
-
-    if (!isValidFileFormat) {
-      return reply.status(400).send()
-    }
-
-    const fileId = randomUUID()
-    const extension = extname(upload.filename)
-
-    const fileName = fileId.concat(extension)
-
-    const writeStream = createWriteStream(
-      resolve(__dirname, '../../tmp/memory', fileName),
-    )
-
-    await pump(upload.file, writeStream)
-
-    const serverUrl = request.protocol.concat('://').concat(request.hostname)
-
-    const fileUrl = new URL(`/uploads/memory/${fileName}`, serverUrl).toString()
-
-    return { fileUrl }
   })
 }

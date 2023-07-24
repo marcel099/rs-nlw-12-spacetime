@@ -4,8 +4,14 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/src/server.js",
+    "build": "tsc --project tsconfig.json",
     "dev": "tsx watch src/server.ts",
-    "lint": "eslint src --ext .ts --fix"
+    "postbuild": "yarn migrate:deploy",
+    "lint": "eslint src --ext .ts --fix",
+    "migrate:reset": "prisma migrate reset",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
@@ -13,7 +19,6 @@
   "devDependencies": {
     "@rocketseat/eslint-config": "^1.2.0",
     "@types/node": "^20.1.5",
-    "dotenv": "^16.0.3",
     "eslint": "^8.40.0",
     "prisma": "^4.14.0",
     "tsx": "^3.12.7",
@@ -26,7 +31,9 @@
     "@fastify/static": "^6.10.1",
     "@prisma/client": "^4.14.0",
     "axios": "^1.4.0",
+    "dotenv": "^16.0.3",
     "fastify": "^4.17.0",
+    "form-data": "^4.0.0",
     "zod": "^3.21.4"
   }
 }

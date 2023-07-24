@@ -14,3 +14,6 @@ tmp/*
 # any direct child of tmp's direct child, except .gitkeep
 tmp/*/*
 !tmp/*/.gitkeep
+
+# Build
+dist
