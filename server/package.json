@@ -5,7 +5,10 @@
   "main": "index.js",
   "scripts": {
     "dev": "tsx watch src/server.ts",
-    "lint": "eslint src --ext .ts --fix"
+    "lint": "eslint src --ext .ts --fix",
+    "migrate:reset": "prisma migrate reset",
+    "migrate:dev": "prisma migrate dev",
+    "migrate:deploy": "prisma migrate deploy"
   },
   "keywords": [],
   "author": "",
