@@ -2,7 +2,6 @@ import dayjs from 'dayjs'
 import ptBr from 'dayjs/locale/pt-br'
 import { cookies } from 'next/headers'
 import Image from 'next/image'
-import Link from 'next/link'
 import { ArrowLeft } from 'lucide-react'
 
 import { EmptyMemories } from '@/components/EmptyMemories'
@@ -58,13 +57,13 @@ export default async function Home() {
             {memory.excerpt}
           </p>
 
-          <Link
+          <a
             href={`/memories/${memory.id}`}
             className="flex items-center gap-2 text-sm text-gray-200 hover:text-gray-100"
           >
             Ler mais
             <ArrowLeft className="h-4 w-4" />
-          </Link>
+          </a>
         </div>
       ))}
     </div>
