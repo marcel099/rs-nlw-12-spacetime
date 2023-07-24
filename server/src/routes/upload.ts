@@ -30,16 +30,6 @@ export async function uploadRoutes(app: FastifyInstance) {
 
       const upload = file[0]
 
-      const result = await request.file({
-        limits: {
-          fileSize: 5_242_880, // 5 MB
-        },
-      })
-
-      if (!result) {
-        return reply.status(400).send()
-      }
-  
       const formData = new FormData();
   
       formData.append('image', upload.data.toString('base64'));
@@ -67,6 +57,8 @@ export async function uploadRoutes(app: FastifyInstance) {
         reply.code(400).send(error.issues)
         return
       }
+
+      console.error(error)
 
       reply.code(500)
     }
