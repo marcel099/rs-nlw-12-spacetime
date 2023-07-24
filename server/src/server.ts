@@ -18,7 +18,10 @@ app.register(cors, {
 app.register(jwt, {
   secret: auth.token_secret,
 })
-app.register(multipart)
+app.register(multipart, {
+  addToBody: true,
+  sharedSchemaId: "MultipartFileType",
+})
 app.register(require('@fastify/static'), {
   root: resolve(__dirname, '../tmp/memory'),
   prefix: '/uploads/memory',
