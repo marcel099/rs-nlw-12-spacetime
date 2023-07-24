@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "node dist/src/server.js",
+    "build": "tsc --project tsconfig.json",
     "dev": "tsx watch src/server.ts",
+    "postbuild": "yarn migrate:deploy",
     "lint": "eslint src --ext .ts --fix",
     "migrate:reset": "prisma migrate reset",
     "migrate:dev": "prisma migrate dev",
