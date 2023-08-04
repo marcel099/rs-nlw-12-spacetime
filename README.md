@@ -14,6 +14,7 @@
 * [Índice](#índice)
 * [Sobre](#sobre)
   * [Conceito do projeto](#conceito-do-projeto)
+  * [Tecnologias](#principais-tecnologias-utilizadas)
 * [Licença](#licença)
 
 ## Sobre
@@ -27,6 +28,42 @@ A opção por essas ferramentas foi realizada pela Rocketseat por acreditarem fo
 ### Conceito do projeto
 
 Aplicação de recordação de memórias em que o usuário pode adicionar textos, fotos e vídeos a uma linha do tempo dedicada a acontecimentos marcantes da sua vida.
+
+### Principais tecnologias utilizadas
+
+O sistema foi desenvolvido em JavaScript. É composto de 3 partes:
+
+- Back-End
+  - [Node.js](https://nodejs.org/en/)
+  - [Fastify](https://fastify.io/)
+  - [Zod](https://zod.dev/)
+  - [Prisma](https://www.prisma.io/)
+  - [PostgreSQL](https://www.postgresql.org/)
+- Front-End Web
+  - [Next](https://nextjs.org/)
+  - [React](https://react.dev/)
+  - [Tailwind CSS](https://tailwindcss.com/)
+  - [Lucide](https://lucide.dev/)
+  - [JavaScript Cookie](https://www.npmjs.com/package/js-cookie)
+  - [Day.js](https://day.js.org/)
+- Front-End Mobile
+  - [React Native](https://reactnative.dev/)
+  - [Expo](https://expo.dev/)
+  - [Expo Router](https://docs.expo.dev/routing/introduction/)
+  - [Expo Fonts](https://docs.expo.dev/develop/user-interface/fonts/)
+  - [Expo Auth Session](https://docs.expo.dev/versions/latest/sdk/auth-session/)
+  - [Expo Image Picker](https://docs.expo.dev/versions/latest/sdk/imagepicker/)
+  - [Expo Secure Store](https://docs.expo.dev/versions/latest/sdk/securestore/)
+  - [NativeWind](https://nativewind.dev/)
+  - [Day.js](https://day.js.org/)
+
+Alguns pontos a destacar:
+
+- Cada aplicação possui [ESLint](https://eslint.org/) configurado para padronização de código
+- A autenticação do usuário baseia-se em login social com [GitHub OAuth](https://developer.github.com/v3/oauth/) e persistência da sessão com [JWT](https://jwt.io/)
+- Validação de dados enviados ao servidor HTTP através da biblioteca [Zod](https://zod.dev/)
+- A hospedagem de imagens de avatar de usuário é realizada no [ImgBB](https://pt-br.imgbb.com/)
+- Seleção e upload de imagem armazenada no smartphone do usuário através da biblioteca [Expo Image Picker](https://docs.expo.dev/versions/latest/sdk/imagepicker/)
 
 ## Licença
 
