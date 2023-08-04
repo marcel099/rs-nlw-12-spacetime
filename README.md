@@ -65,6 +65,11 @@ Alguns pontos a destacar:
 - A hospedagem de imagens de avatar de usuário é realizada no [ImgBB](https://pt-br.imgbb.com/)
 - Seleção e upload de imagem armazenada no smartphone do usuário através da biblioteca [Expo Image Picker](https://docs.expo.dev/versions/latest/sdk/imagepicker/)
 
+Se desejar explorar as rotas do servidor HTTP Node desenvolvido para esse sistema, poderá fazer isso através do [Insomnia](https://insomnia.rest/).
+
+[![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=NLW%20%2312%20-%20Spacetime&uri=https%3A%2F%2Fgithub.com%2Fmarcel099%2Frs-nlw-12-spacetime%2Fblob%2Fmain%2Fassets%2Finsomnia_collection.json)
+
+
 ## Licença
 
 Este projeto está sob a licença MIT. Para maiores detalhes acesse o <a href="./LICENSE.md">arquivo de licença</a>.
