@@ -3,7 +3,6 @@ import fastify from 'fastify'
 import cors from '@fastify/cors'
 import jwt from '@fastify/jwt'
 import multipart from '@fastify/multipart'
-import { resolve } from 'node:path'
 
 import { memoriresRoutes } from './routes/memories'
 import { authRoutes } from './routes/auth'
@@ -18,10 +17,7 @@ app.register(cors, {
 app.register(jwt, {
   secret: auth.token_secret,
 })
-app.register(multipart, {
-  addToBody: true,
-  sharedSchemaId: "MultipartFileType",
-})
+app.register(multipart)
 
 app.register(memoriresRoutes)
 app.register(authRoutes)

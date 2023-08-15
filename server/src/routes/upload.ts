@@ -1,65 +1,70 @@
-import axios, { AxiosError } from 'axios';
+import axios, { AxiosError } from 'axios'
 import FormData from 'form-data'
 import { FastifyInstance } from 'fastify'
-import { z, ZodError } from 'zod'
 
 export async function uploadRoutes(app: FastifyInstance) {
   app.post('/upload', async (request, reply) => {
     try {
+      const uploadData = await request.file({
+        limits: {
+          fileSize: 5_242_880, // 5 MB
+        },
+      })
+
       if (!request.isMultipart()) {
-        reply.code(400).send(new Error("Request is not multipart"));
-        return;
+        reply.code(400).send(new Error('Request is not multipart'))
+        return
       }
 
-      const fileSchema = z.object({
-        data: z.any(),
-        filename: z.string().min(1),
-        mimetype: z.string().regex(
-          /^(image)\/[a-zA-Z]*/,
-          'Invalid file type'
-        ),
-      })
+      if (!uploadData) {
+        reply.status(400).send(new Error('Image not included'))
+        return
+      }
 
-      const bodySchema = z.object({
-        file: z.array(fileSchema).refine(
-          (files) => files?.length === 1, "Image is required."
-        ),
-      })
-  
-      const { file } = bodySchema.parse(request.body)
+      const mimeTypeRegex = /^(image)\/[a-zA-Z]*/
+      const isValidFileFormat = mimeTypeRegex.test(uploadData.mimetype)
 
-      const upload = file[0]
+      if (!isValidFileFormat) {
+        return reply.status(400).send(new Error('Invalid file type'))
+      }
 
-      const formData = new FormData();
-  
-      formData.append('image', upload.data.toString('base64'));
-      formData.append('key', process.env.IMGBB_API_KEY);
-  
+      const uploadBuffer = await uploadData.toBuffer()
+
+      const formData = new FormData()
+
+      formData.append('image', uploadBuffer.toString('base64'))
+      formData.append('key', process.env.IMGBB_API_KEY)
+
       const response = await axios.post(
         'https://api.imgbb.com/1/upload',
         formData,
         {
-          headers: { 'content-type': 'multipart/form-data' }
-        }
+          headers: { 'content-type': 'multipart/form-data' },
+        },
       )
-  
+
       return {
-        fileUrl: response.data.data.url
+        fileUrl: response.data.data.url,
       }
     } catch (error) {
       if (error instanceof AxiosError) {
-        console.error(error.code)
-        console.error(error.message)
-        console.error(error?.response?.data)
-      }
-
-      if (error instanceof ZodError) {
-        reply.code(400).send(error.issues)
+        console.error({
+          code: error.code,
+          message: error.message,
+          responseData: error?.response?.data,
+        })
+        reply
+          .code(500)
+          .send(new Error('Error on uploading the file to the hosting service'))
         return
       }
 
-      console.error(error)
+      const fastifyMultipartError = error as any
+      if (fastifyMultipartError?.code === 'FST_REQ_FILE_TOO_LARGE') {
+        reply.code(Number(fastifyMultipartError.statusCode)).send()
+      }
 
+      console.error(error)
       reply.code(500)
     }
   })
