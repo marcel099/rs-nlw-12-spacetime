@@ -1,3 +1,7 @@
+<h1 align="center">
+  <img alt="A imagem contém um notebook e um smartphone com telas da aplicação" title="Banner da aplicação Be The Hero" src="./assets/screenshots/banner.png" />
+</h1>
+
 <h4 align="center"> 
   Next Level Week #12 - Spacetime
 </h4>
@@ -15,6 +19,7 @@
 * [Sobre](#sobre)
   * [Conceito do projeto](#conceito-do-projeto)
   * [Tecnologias](#principais-tecnologias-utilizadas)
+* [Créditos](#créditos)
 * [Licença](#licença)
 
 ## Sobre
@@ -69,6 +74,9 @@ Se desejar explorar as rotas do servidor HTTP Node desenvolvido para esse sistem
 
 [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=NLW%20%2312%20-%20Spacetime&uri=https%3A%2F%2Fgithub.com%2Fmarcel099%2Frs-nlw-12-spacetime%2Fblob%2Fmain%2Fassets%2Finsomnia_collection.json)
 
+## Créditos
+
+Credito a elaboração do modelo do banner deste documento e do banner social ao autor desconhecido desta [postagem](https://mckups.com/pixel-4-and-pixelbook-go-mockup/) no site [Mckups](https://mckups.com). Foi adaptado por mim de acordo com as características deste projeto.
 
 ## Licença
 
