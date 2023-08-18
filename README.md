@@ -19,6 +19,7 @@
 * [Sobre](#sobre)
   * [Conceito do projeto](#conceito-do-projeto)
   * [Tecnologias](#principais-tecnologias-utilizadas)
+* [Instalação local](#instalação-local)
 * [Créditos](#créditos)
 * [Licença](#licença)
 
@@ -85,6 +86,10 @@ Alguns pontos a destacar:
 Se desejar explorar as rotas do servidor HTTP Node desenvolvido para esse sistema, poderá fazer isso através do [Insomnia](https://insomnia.rest/).
 
 [![Run in Insomnia}](https://insomnia.rest/images/run.svg)](https://insomnia.rest/run/?label=NLW%20%2312%20-%20Spacetime&uri=https%3A%2F%2Fgithub.com%2Fmarcel099%2Frs-nlw-12-spacetime%2Fblob%2Fmain%2Fassets%2Finsomnia_collection.json)
+
+## Instalação local
+
+Passos para atingir isso podem ser conferidos <a href="./INSTALLATION.md">neste arquivo</a>.
 
 ## Créditos
 
