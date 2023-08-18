@@ -32,7 +32,19 @@ A opção por essas ferramentas foi realizada pela Rocketseat por acreditarem fo
 
 ### Conceito do projeto
 
-Aplicação de recordação de memórias em que o usuário pode adicionar textos, fotos e vídeos a uma linha do tempo dedicada a acontecimentos marcantes da sua vida.
+O Spacetime é um sistema para recordação de memórias.
+
+Tanto na versão web quanto na versão mobile, o usuário se cadastra no sistema utilizando login social com GitHub. Após se autenticar, o usuário pode adicionar textos e fotos a uma linha do tempo dedicada a acontecimentos marcantes da sua vida.
+
+<div align="center">
+  <img alt="Página de gerenciamento das ocorrências da ONG" src="./assets/screenshots/home_screen_web.png" />
+</div>
+
+<div align="center">
+  <img title="Tela com lista de ocorrências" src="./assets/screenshots/home_screen_mobile.png" width="30%" />
+  <img title="Tela com detalhes de uma ocorrência" src="./assets/screenshots/new_memory_screen_mobile.png" width="30%" />
+</div>
+
 
 ### Principais tecnologias utilizadas
 
